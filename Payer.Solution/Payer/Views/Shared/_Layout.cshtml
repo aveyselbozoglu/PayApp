@@ -9,6 +9,7 @@
 
     <link href="~/Content/site.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/my.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 </head>
 <body>
@@ -16,10 +17,11 @@
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo"><img src="~/Images/Paycompute2.gif" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="~/Employee/Index"><img src="~/Images/logo.png" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                
+                <a class="nav-link text-primary">Register</a>
+                <a class="nav-link text-primary">Login</a>
             </div>
         </nav>
         <div class="container-fluid page-body-wrapper">
@@ -33,8 +35,8 @@
                         </a>
                         <div class="collapse" id="Employee">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" > New Employee</a></li>
-                                <li class="nav-item"><a class="nav-link" > All Employees</a></li>
+                                <li class="nav-item"><a href="~/Employee/Create" class="nav-link" > New Employee</a></li>
+                                <li class="nav-item"><a href="~/Employee/Index" class="nav-link" > All Employees</a></li>
                             </ul>
                         </div>
                     </li>
@@ -59,8 +61,8 @@
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                <footer class="footer">
-                    <p> &copy; @DateTime.UtcNow.Year - Payer -</p>
+                <footer class="footer" style="position: absolute;bottom:0">
+                    <p> &copy; @DateTime.UtcNow.Year - Payer</p>
                 </footer>
             </div>
         </div>

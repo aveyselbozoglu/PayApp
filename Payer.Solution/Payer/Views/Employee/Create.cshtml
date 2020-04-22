@@ -1,0 +1,211 @@
+﻿@model Payer.ViewModels.EmployeeCreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+
+    
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-LabelFor="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item"><a href="/Employee/Index">Employee List</a></li>
+                        <li class="breadcrumb-item active">New Employee</li>
+                    </ol>
+                </nav><br /><br />
+                @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.EmployeeNo,"EmployeeNo")
+
+                        </div>
+                        <div class="form-group col-md-3">
+
+                            @Html.TextBoxFor(x => x.EmployeeNo, new
+                            {
+                                placeholder = "Enter Employee No..."
+                                , @class = "form-control"
+                            })
+                            
+                            @Html.ValidationMessageFor(x=> x.EmployeeNo,"",new{ @class="text-danger" ,style="" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.FirstName,"FirstName")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.FirstName, new { placeholder = "Enter First Name...", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger", style = "" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(x => x.MiddleName, new
+                            {
+                                @class = "form-control", placeholder = "Enter Middle Name..."
+                            })
+                            @Html.ValidationMessageFor(x => x.MiddleName, "", new { @class = "text-danger", style = "" })
+                        </div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.LastName,"LastName")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.LastName, new
+                            {
+                                @class = "form-control", placeholder = "Enter Last Name..."
+                            })
+                            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger", style = "" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.Gender,"Gender")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.Gender, new { placeholder = "Enter Gender...", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.DOB,"Date Of Birth")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.DOB, new
+                            {
+                                @class = "form-control", placeholder = "Enter Date Of Birth..."
+                            })
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.NationalInsuranceNo,"Ni No:")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.NationalInsuranceNo, new { placeholder = "Enter Ni No...", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.NationalInsuranceNo, "", new { @class = "text-danger", style = "" })
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.Email,"Email")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x=> x.Email , new
+                            {
+                                @class="form-control" , placeholder="Enter Email..."
+                            })
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.Phone,"Phone:")
+                            
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.Phone, new { placeholder = "Enter Phone...", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.PaymentMethod,"Payment Method")
+                        </div>
+                        <div class="form-group col-md-3">
+                            <!-- todo dropdown list with enum gelecek -->
+                            @Html.EnumDropDownListFor(x=> x.PaymentMethod,new
+                            {
+                                @class="form-control"
+                            })
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.StudentLoan,"Student Loan")
+                        </div>
+                        <div class="form-group col-md-3">
+                            <!-- todo dropdownlist studenloan gelecek -->
+                            @Html.EnumDropDownListFor(x=> x.StudentLoan,new
+                            {
+                                @class="form-control"
+                            })
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.UnionMember,"Union Member")
+                        </div>
+                        <div class="form-group col-md-3">
+                            <!-- todo dropdown list with enum  Union Member gelecek -->
+                            @Html.EnumDropDownListFor(x=> x.UnionMember,new
+                            {
+                                @class="form-control"
+                            })
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x=> x.Designation,"Designation")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBoxFor(x => x.Designation, new { @class = "form-control", placeholder = "Enter Role..." })
+                            @Html.ValidationMessageFor(x => x.Designation, "", new { @class = "text-danger", style = "" })
+
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-1">
+                            @Html.LabelFor(x=>x.ImageUrl,"ImageUrl")
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="btn btn-primary btn-icon-text">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <input type="file" name="profileImage"  class="form-control" /><br /><br />
+                                <span><i><small>Lütfen jpg, jpeg ya da png formatı kullanın.</small></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Address, "Address")
+                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", placeholder = "Enter Address.." })
+                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger", style = "" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.City, "City")
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-control", placeholder = "Enter City.." })
+                        @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger", style = "" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Postcode, "Postcode")
+                        @Html.TextBoxFor(x => x.Postcode, new { @class = "form-control", placeholder = "Enter Postcode.." })
+                        @Html.ValidationMessageFor(x => x.Postcode, "", new { @class = "text-danger", style = "" })
+
+                    </div>
+                    <div class="form-group">
+                        
+                        <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
+                        <a href="~/Employee/Index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,97 @@
+﻿@using System.Web.UI.WebControls
+@using Payer.Entities
+@model List<Employee>
+
+@{
+    
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Employee List</a></li>
+                    </ol>
+                </nav> <br /><br />
+            
+                <div class="row">
+                    <div class="col-md-12 table-responsive-md">
+                        <a href="/Employee/Create" class="btn btn-xs btn-outline-success float-md-right">New Employee</a>
+
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Employee No.</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Designation</th>
+                                <th>City</th>
+                                <th>Joined</th>
+                                <th class="text-warning">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><a href="#">@item.EmployeeNo</a></td>
+
+                                        @{
+                                            if (!string.IsNullOrEmpty(item.ImageUrl))
+                                            {
+                                                <td><img src="~/Images/employee/@item.ImageUrl"></td>
+                                            }
+                                            else
+                                            {
+                                                <td><img src="~/Images/employee/boy.png"></td>
+                                            }
+                                        }
+
+
+                                        <td>@item.FullName</td>
+                                        <td>@item.Gender</td>
+                                        <td>@item.Designation</td>
+                                        <td>@item.City</td>
+                                        <td>@item.DateJoined.ToShortDateString()</td>
+
+                                        <td>
+                                            <a href="" class="text-primary">
+                                                @item.Id
+                                                <i class="fas fa-edit"></i>  Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="text-primary">
+                                                @item.Id
+                                                <i class="fas fa-bars"></i>  Detail
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="text-primary">
+                                                @item.Id
+                                                <i class="fas fa-trash-alt"></i>  Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var message = '@ViewBag.SuccessMsg';
+    if(message){
+        alert(message);
+    }
+</script>
