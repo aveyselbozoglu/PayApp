@@ -1,6 +1,7 @@
 ﻿using Payer.BusinessLayer;
 using Payer.Entities;
 using Payer.ViewModels;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -31,11 +32,11 @@ namespace Payer.Controllers
             if (ModelState.IsValid)
             {
                 if (profileImage != null && (profileImage.ContentType == "image/jpg" ||
-                                              profileImage.ContentType == "image/png" ||
-                                              profileImage.ContentType == "image/jpeg"))
+                                             profileImage.ContentType == "image/png" ||
+                                             profileImage.ContentType == "image/jpeg"))
                 {
                     string fileName =
-                        $"employee_{employeeCreateViewModel.EmployeeNo}.{profileImage.ContentType.Split('/')[1]}";
+                        $"employee_{employeeCreateViewModel.EmployeeNo}_time_{DateTime.Now.ToShortDateString()}.{profileImage.ContentType.Split('/')[1]}";
                     employeeCreateViewModel.ImageUrl = fileName;
                     profileImage.SaveAs(Server.MapPath($"/Images/employee/{fileName}"));
                 }
@@ -44,29 +45,92 @@ namespace Payer.Controllers
 
                 if (blResultEmployee.BlResult != null)
                 {
-                    ViewBag.Message = "Message";
-                    return RedirectToAction("Index");
-                    
-                }
-                
+                    //blResultEmployee.ToastrNotificationObject.Title = "Deneme";
+                    //blResultEmployee.ToastrNotificationObject.Message = "Employee added succesfully";
+                    //blResultEmployee.ToastrNotificationObject.ToastrNotificationType = ToastrNotificationType.Success;
 
+                    //Alert("Başarılı" , NotificationType.success);
+                    return RedirectToAction("Index");
+                }
             }
+
             return View(employeeCreateViewModel);
-            
         }
 
-
-
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                var employeeManager = new EmployeeManager();
+                blResultEmployee = employeeManager.GetEmployeeById(id);
+            }
+
+            return View(blResultEmployee.BlResult);
         }
 
         [HttpPost]
-        public ActionResult Edit(EmployeeCreateViewModel model)
+        public ActionResult Edit(Employee updatedEmployee, HttpPostedFileBase profileImage)
         {
-            return View();
+            var employeeManager = new EmployeeManager();
+            ModelState.Remove("EmployeeNo");
+            if (ModelState.IsValid)
+            {
+                if (profileImage != null && (profileImage.ContentType == "image/jpg" ||
+                                             profileImage.ContentType == "image/png" ||
+                                             profileImage.ContentType == "image/jpeg"))
+                {
+                    string fileName =
+                        $"employee_{updatedEmployee.EmployeeNo}_time_{DateTime.Now.ToShortDateString()}.{profileImage.ContentType.Split('/')[1]}";
+                    updatedEmployee.ImageUrl = fileName;
+                    profileImage.SaveAs(Server.MapPath($"/Images/employee/{fileName}"));
+                }
+                employeeManager.EditEmployee(updatedEmployee);
+                return RedirectToAction("Index");
+            }
+
+            return View(updatedEmployee);
         }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id != null)
+            {
+                var employeeManager = new EmployeeManager();
+                blResultEmployee = employeeManager.GetEmployeeById(id);
+            }
+
+            return View(blResultEmployee.BlResult);
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                var employeeManager = new EmployeeManager();
+                blResultEmployee = employeeManager.DeleteEmployeeById(id);
+
+                if (blResultEmployee.IsDone > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        //    public void Alert(string message, NotificationType notificationType)
+        //    {
+        //        var msg = "toastr." + notificationType.ToString().ToLower() + "('" + message + "','" + notificationType + "')" + "";
+        //        TempData["notification"] = msg;
+        //    }
+        //}
+        //public enum NotificationType
+        //{
+        //    error,
+        //    success,
+        //    warning,
+        //    info
+        //};
     }
 }

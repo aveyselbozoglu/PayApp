@@ -57,13 +57,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentLoan.cs" />
     <Compile Include="TaxYear.cs" />
+    <Compile Include="ToastrNotification\ToastrNotificationObject.cs" />
+    <Compile Include="ToastrNotification\ToastrNotificationType.cs" />
     <Compile Include="UnionMember.cs" />
     <Compile Include="ViewModels\EmployeeCreateViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeEditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

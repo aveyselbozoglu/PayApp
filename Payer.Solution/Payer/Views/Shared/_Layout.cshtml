@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <link href="~/Content/site.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/my.css" rel="stylesheet" />
@@ -31,12 +31,12 @@
                         <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
                             <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
                             <span class="menu-title">Employee</span>
-                            <i class="menu-arrow" ></i>
+                            <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="Employee">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a href="~/Employee/Create" class="nav-link" > New Employee</a></li>
-                                <li class="nav-item"><a href="~/Employee/Index" class="nav-link" > All Employees</a></li>
+                                <li class="nav-item"><a href="~/Employee/Create" class="nav-link"> New Employee</a></li>
+                                <li class="nav-item"><a href="~/Employee/Index" class="nav-link"> All Employees</a></li>
                             </ul>
                         </div>
                     </li>
@@ -49,15 +49,15 @@
                         </a>
                         <div class="collapse" id="Payroll">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" > New Pay</a></li>
-                                <li class="nav-item"><a class="nav-link" > Payment Records</a></li>
+                                <li class="nav-item"><a class="nav-link"> New Pay</a></li>
+                                <li class="nav-item"><a class="nav-link"> Payment Records</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </nav>
             <div class="main-panel">
-                
+
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
@@ -70,8 +70,11 @@
 
 
 
-   
-    <script src="~/Scripts/dist/jquery.min.js"></script>
+
+    <script src="~/Scripts/dist/jquery.js"></script>
     <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <!--<script src="~/Scripts/toastr.min.js"></script>-->
+    <script src="~/Scripts/site.js"></script>
+
 </body>
 </html>

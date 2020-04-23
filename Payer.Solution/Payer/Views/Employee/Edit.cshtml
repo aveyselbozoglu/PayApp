@@ -1,12 +1,8 @@
-﻿@model Payer.ViewModels.EmployeeCreateViewModel
+﻿@model Payer.Entities.Employee
 
 @{
     ViewBag.Title = "Edit";
 }
-
-
-
-
 
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
@@ -15,27 +11,26 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Employee List</a></li>
-                    <li class="breadcrumb-item active">New Employee</li>
+                    <li class="breadcrumb-item active">Edit Employee</li>
                 </ol>
             </nav><br /><br />
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Edit", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        @Html.LabelFor(x => x.EmployeeNo, "EmployeeNo")
+                @*<div class="form-row">
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(x => x.EmployeeNo, "EmployeeNo")
+                        </div>
+                        <div class="form-group col-md-3">
 
-                    </div>
-                    <div class="form-group col-md-3">
-
-                        @Html.TextBoxFor(x => x.FirstName, new
-                        {
-                            placeholder = "Enter First Name..."
-                            , @class = "form-control"
-                        })
-                    </div>
-                </div>
+                            @Html.TextBoxFor(x => x.FirstName, new
+                            {
+                                placeholder = "Enter First Name..."
+                                , @class = "form-control"
+                            })
+                        </div>
+                    </div>*@
                 <div class="form-row">
 
                     <div class="form-group col-md-2">
@@ -60,25 +55,32 @@
                         })
                     </div>
                 </div>
-                <div class="form-row">
 
+                <div class="form-row">
                     <div class="form-group col-md-2">
                         @Html.LabelFor(x => x.Gender, "Gender")
                     </div>
                     <div class="form-group col-md-3">
                         @Html.TextBoxFor(x => x.Gender, new { placeholder = "Enter Gender...", @class = "form-control" })
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        @Html.LabelFor(x => x.DOB, "Date Of Birth")
-                    </div>
-                    <div class="form-group col-md-3">
-                        @Html.TextBoxFor(x => x.DOB, new
-                        {
-                            @class = "form-control", placeholder = "Enter Date Of Birth..."
-                        })
-                    </div>
+
+                    @*
+
+                        TODO : EDİT SAYFASINDA DATETİMEI @HTML.TEXTBOXFORDA MODEL İÇİN FORMAT DÜZENLEYEMEDİĞİZ İÇİN KALDIRDIM
+
+                    *@
+
+                    @*<div class="col-md-2"></div>
+
+                        <div class="form-group col-md-2">
+
+                            @Model.DOB.ToString("dd/MM/yyyy")
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.TextBox("DOB","","", new { placeholder = "Enter Gender...", @class = "form-control" })
+                        </div>*@
                 </div>
+
                 <div class="form-row">
 
                     <div class="form-group col-md-2">
@@ -97,16 +99,11 @@
                             @class="form-control" , placeholder="Enter Email..."
                         })
                     </div>
-
-
-
-
                 </div>
                 <div class="form-row">
 
                     <div class="form-group col-md-2">
                         @Html.LabelFor(x => x.Phone, "Phone:")
-
                     </div>
                     <div class="form-group col-md-3">
                         @Html.TextBoxFor(x => x.Phone, new { placeholder = "Enter Phone...", @class = "form-control" })
@@ -122,7 +119,6 @@
                             @class="form-control"
                         })
                     </div>
-
                 </div>
                 <div class="form-row">
 
@@ -147,7 +143,6 @@
                             @class="form-control"
                         })
                     </div>
-
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
@@ -163,24 +158,22 @@
                     <div class="form-group col-md-4">
                         <div class="btn btn-primary btn-icon-text">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <input type="file" name="file" value="Upload" />
+                            <input type="file" name="profileImage" class="form-control" /><br /><br />
+                            <span><i><small>Lütfen jpg, jpeg ya da png formatı kullanın.</small></i></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Address, "Address")
                     @Html.TextBoxFor(x => x.Address, new { @class = "form-control", placeholder = "Enter Address.." })
-
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.City, "City")
                     @Html.TextBoxFor(x => x.City, new { @class = "form-control", placeholder = "Enter City.." })
-
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Postcode, "Postcode")
                     @Html.TextBoxFor(x => x.Postcode, new { @class = "form-control", placeholder = "Enter Postcode.." })
-
                 </div>
                 <div class="form-group">
 
@@ -189,13 +182,8 @@
                     <br />
                     <br />
                     <br />
-
                 </div>
             }
         </div>
     </div>
 </div>
-
-
-
-
