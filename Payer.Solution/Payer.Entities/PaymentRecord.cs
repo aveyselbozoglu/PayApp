@@ -9,19 +9,21 @@ namespace Payer.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey("Employee")] public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
         [MaxLength(100)] public string FullName { get; set; }
         public string NiNo { get; set; }
-        public DateTime PayDate { get; set; }
+
+        public DateTime PayDate { get; set; } = DateTime.Now;
+
         public string PayMonth { get; set; }
-        [ForeignKey("TaxYear")] public int TaxYearId { get; set; }
-        public TaxYear TaxYear { get; set; }
+        
         public string TaxCode { get; set; }
-        [Column(TypeName = "money")] public decimal HourlyRate { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal HourlyRate { get; set; }
         public decimal HoursWorked { get; set; }
         public decimal ContractualHours { get; set; }
         public decimal OvertimeHours { get; set; }
+
         [Column(TypeName = "money")] public decimal ContractualEarnings { get; set; }
         [Column(TypeName = "money")] public decimal OvertimeEarnings { get; set; }
         [Column(TypeName = "money")] public decimal Tax { get; set; }
@@ -33,6 +35,16 @@ namespace Payer.Entities
         [Column(TypeName = "money")] public decimal NetPayment { get; set; }
 
 
+        
+        public int EmployeeId { get; set; }
 
+        [ForeignKey("EmployeeId")]
+        public virtual Employee Employee { get; set; }
+
+        
+        public int TaxYearId { get; set; }
+
+        [ForeignKey("TaxYearId")]
+        public virtual TaxYear TaxYear { get; set; }
     }
 }

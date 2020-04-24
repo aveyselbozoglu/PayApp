@@ -1,0 +1,131 @@
+﻿@using Payer.Entities
+@model PaymentRecord
+
+@{
+    //List<Employee> employees = TempData["employees"] as List<Employee>;
+
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Home</a></li>
+                    <li class="breadcrumb-item"><a>Payroll List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pay Computation</li>
+                </ol>
+            </nav><br /><br />
+            <form method="post" enctype="multipart/form-data">
+                <div class="text-danger"></div>
+                <div class="form-group col-md-12">
+                    <label></label>
+
+                    <!-- Dropdownlist for employeeid   -->
+                    @{
+                        if (ViewBag.Employees != null)
+                        {
+                            @Html.DropDownListFor(x => x.EmployeeId, ViewBag.Employees as SelectList, "-- Select Employee--", new { @class = "form-control" })
+                        }
+                    }
+
+                    <span class="text-danger"></span>
+                </div><br /><br /><br />
+                <div class="form-row">
+                    <div class="form-group col-md-1">
+                        @Html.LabelFor(x => x.PayMonth, "PayMonth")<br />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <!-- PAY ATTENTION -->
+
+                        @Html.DropDownListFor(x => x.PayMonth, new List<SelectListItem>()
+                        {
+                            new SelectListItem() {Text = "January", Value = "January"},
+                            new SelectListItem() {Text = "February", Value = "February"},
+                            new SelectListItem() {Text = "March", Value = "March"},
+                            new SelectListItem() {Text = "April", Value = "April"},
+                            new SelectListItem() {Text = "March", Value = "March"},
+                            new SelectListItem() {Text = "June", Value = "June"},
+                            new SelectListItem() {Text = "July", Value = "July"},
+                            new SelectListItem() {Text = "August", Value = "August"},
+                            new SelectListItem() {Text = "September", Value = "September"},
+                            new SelectListItem() {Text = "October", Value = "October"},
+                            new SelectListItem() {Text = "November", Value = "November"},
+                            new SelectListItem() {Text = "December", Value = "December"},
+                        }, "--Select PayMonth--", new {@class = "form-control"})
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        @Html.LabelFor(x => x.TaxYearId, "TaxYear")<br />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <!-- Dropdownlist for TAXYEARS   -->
+                        @{
+                            if (ViewBag.TaxYears != null)
+                            {
+                                @Html.DropDownListFor(x => x.TaxYearId, ViewBag.TaxYears as SelectList, "--Select TaxYear--", new { @class = "form-control" })
+                            }
+                        }
+                    </div>
+                    <div class="form-group col-md-1">
+                        @Html.LabelFor(x => x.PayDate, "Pay")<br />Date
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        @Html.TextBoxFor(x => x.PayDate, new
+                        {
+                            placeholder = "Enter Paydate.."
+                            , @class = "form-control"
+                        })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-1">
+                        @Html.LabelFor(x => x.HourlyRate, "Hourly")<br />Rate
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.TextBoxFor(x => x.HourlyRate, new
+                        {
+                            placeholder = "0.00"
+                            , @class = "form-control"
+                        })
+                    </div>
+                    <div class="form-group col-md-1">
+                        <!-- todo label style değişecek -->
+                        @Html.LabelFor(x => x.HoursWorked, "Hours")<br />Worked
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.TextBoxFor(x => x.HoursWorked, new
+                        {
+                            placeholder = "0.00"
+                            , @class = "form-control"
+                        })
+                        <span></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <!-- todo label style değişecek -->
+                        @Html.LabelFor(x => x.ContractualHours, "Contractual")<br />Hours
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.TextBoxFor(x => x.ContractualHours, new
+                        {
+                            placeholder = "Enter ContractualHours..."
+                            , @class = "form-control"
+                        })
+                        <span></span>
+                    </div>
+                </div><br /><br />
+
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-calculator" style="margin-right:0.7em"></i>Compute & Save</button>
+                    <a href="~/Pay/Index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back to Pay List</a>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

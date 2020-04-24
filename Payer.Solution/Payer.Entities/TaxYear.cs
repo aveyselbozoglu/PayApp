@@ -12,6 +12,17 @@ namespace Payer.Entities
     {
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string YearOfTax { get; set; }
+
+
+        public virtual List<PaymentRecord> PaymentRecords { get; set; }
+
+        public TaxYear()
+        {
+            PaymentRecords = new List<PaymentRecord>();
+        }
+
+       
     }
 }

@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="BusinessLayerResult.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="PayComputationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxYearsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Payer.DataAccessLayer\Payer.DataAccessLayer.csproj">

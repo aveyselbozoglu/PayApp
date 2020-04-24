@@ -39,7 +39,9 @@ namespace Payer.Entities
         public string City { get; set; }
         [Required, MaxLength(50)]
         public string Postcode { get; set; }
-        public IEnumerable<PaymentRecord> PaymentRecords { get; set; }
+
+
+        public virtual List<PaymentRecord> PaymentRecords { get; set; }
 
         public Employee()
         {
