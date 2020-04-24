@@ -8,7 +8,7 @@ namespace Payer.Entities
 {
     public enum StudentLoan
     {
-        Yes,
-        No
+        No,
+        Yes
     }
 }

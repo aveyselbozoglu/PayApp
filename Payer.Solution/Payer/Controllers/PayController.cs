@@ -49,6 +49,18 @@ namespace Payer.Controllers
             return View(paymentRecord);
         }
 
+        public ActionResult Detail(int? id)
+        {
+            if (id != null)
+            {
+                blResultPaymentRecord = payComputationManager.GetPaymentRecordById(id);
+                return View(blResultPaymentRecord.BlResult);
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
 
     }
 }

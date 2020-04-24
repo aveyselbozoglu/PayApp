@@ -9,8 +9,12 @@ namespace Payer.Controllers
 {
     public class EmployeeController : Controller
     {
-        private BusinessLayerResult<Employee> blResultEmployee = new BusinessLayerResult<Employee>();
+        private BusinessLayerResult<Employee> blResultEmployee;
 
+        public EmployeeController()
+        {
+            blResultEmployee = new BusinessLayerResult<Employee>();
+        }
         // GET: Employee
         public ActionResult Index()
         {
