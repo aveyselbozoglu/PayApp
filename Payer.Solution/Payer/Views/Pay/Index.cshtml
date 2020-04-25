@@ -1,5 +1,5 @@
-﻿@using Payer.Entities
-@model IEnumerable<Payer.Entities.PaymentRecord>
+﻿@using Payer
+@model ListPagination<Payer.Entities.PaymentRecord>
 <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
@@ -12,7 +12,7 @@
                 </nav><br /><br />
                 <div class="row">
                     <div class="col-md-12 table-responsive-md">
-                        <a href="~/Pay/Create" class="btn btn-xs btn-outline-success float-md-right" > New Pay</a>
+                        <a href="~/Pay/Create" class="btn btn-xs btn-outline-success float-md-right"> New Pay</a>
 
                         <table class="table table-striped">
                             <thead>
@@ -46,17 +46,27 @@
                                         <td>@item.NetPayment.ToString("C")</td>
                                         <td>
 
-                                            <a class="text-success">
+                                            <a href="/Pay/Payslip/@item.Id" class="text-success">
                                                 <i class="fas fa-bars"></i> Preview Payslip
                                             </a>
-                                            <a class="text-danger">
+                                            <a href="~/Pay/GeneratePayslipPdf/@item.Id" class="text-danger">
                                                 <i class="fas fa-file-pdf"></i>  Payslip Pdf
                                             </a>
+
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table><br />
+
+                        @{
+                            var disablePrevious = !Model.IsPreviousPageAvailable() ? "disabled" : "";
+                            var disableNext = !Model.IsNextPageAvailable() ? "disabled" : "";
+                        }
+
+                        <a href="~/Pay/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
+
+                        <a href="~/Pay/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
 
                     </div>
                 </div>
