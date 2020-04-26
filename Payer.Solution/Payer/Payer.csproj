@@ -160,7 +160,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Filter\Auth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +197,7 @@
     <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\js\bootstrap.js.map" />
     <Content Include="Scripts\js\bootstrap.min.js.map" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

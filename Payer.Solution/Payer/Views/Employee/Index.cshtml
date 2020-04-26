@@ -2,8 +2,6 @@
 @using Payer.Entities
 @model ListPagination<Employee>
 
-
-
 <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
@@ -49,7 +47,7 @@
                                                     <td><img src="~/Images/employee/boy.png"></td>
                                                 }
                                             }
-
+                                            
                                             <td>@item.FullName</td>
                                             <td>@item.Gender</td>
                                             <td>@item.Designation</td>
@@ -84,10 +82,14 @@
                             var disableNext = !Model.IsNextPageAvailable() ? "disabled" : "";
                         }
 
-                        <a href="~/Employee/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
+                        @{
+                            if (Model.TotalPages > 1)
+                            {
+                                <a href="~/Employee/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
 
-
-                        <a href="~/Employee/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
+                                <a href="~/Employee/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -121,6 +123,5 @@
                 "hideMethod": "fadeOut"
             }
         }
-        
     </script>
 }

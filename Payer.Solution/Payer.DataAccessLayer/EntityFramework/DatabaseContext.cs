@@ -13,12 +13,13 @@ namespace Payer.DataAccessLayer.EntityFramework
         public DbSet<PaymentRecord> PaymentRecords { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<TaxYear> TaxYears { get; set; }
+        public DbSet<Login> Login { get; set; }
 
 
         public DatabaseContext()
         {
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
+            //Configuration.LazyLoadingEnabled = false;
+            //Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new MyInitializer());
         }
     }

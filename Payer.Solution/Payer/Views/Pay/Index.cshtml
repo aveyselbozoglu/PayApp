@@ -63,11 +63,16 @@
                             var disablePrevious = !Model.IsPreviousPageAvailable() ? "disabled" : "";
                             var disableNext = !Model.IsNextPageAvailable() ? "disabled" : "";
                         }
-
-                        <a href="~/Pay/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
+                        @{
+                            if (Model.TotalPages > 1)
+                            {
+                                <a href="~/Pay/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
                        
 
-                        <a href="~/Pay/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
+                                <a href="~/Pay/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
+                            }
+                        }
+                        
 
                     </div>
                 </div>

@@ -1,0 +1,62 @@
+﻿@using Payer.Entities
+@model Login
+
+
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+
+    <div class="row" style="height:150px"></div>
+    <div class="form-row pb-1">
+        <div class="form-group col-md-4 offset-4 text-primary">
+            <p>@TempData["loginerror"]</p>
+        </div>    
+    </div>
+    <div class="form-row">
+        
+        @{
+                
+        }
+        <div class="form-group col-md-2 offset-3">
+            @Html.LabelFor(x => x.Username, "Username")
+        </div>
+        <div class="form-group col-md-3">
+
+            @Html.TextBoxFor(x => x.Username, new
+            {
+                placeholder = "Enter username...",
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(x => x.Username, "", new {@class = "text-danger", style = ""})
+        </div>
+
+        
+      
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 offset-3">
+            @Html.LabelFor(x => x.Password, "Password")
+        </div>
+        <div class="form-group col-md-3">
+
+            @Html.TextBoxFor(x => x.Password, new
+            {
+                placeholder = "Enter password...",
+                @class = "form-control",
+                type="password"
+            })
+
+            @Html.ValidationMessageFor(x => x.Password, "", new {@class = "text-danger", style = ""})
+        </div>
+    </div>
+
+
+    <div class="form-row"> 
+        <div class="form-group offset-5">
+
+            <button type="submit" class="btn btn-rounded btn-success "><i class="fas fa-plus-square" style="margin-right: 0.7em"></i>Login</button>
+
+        </div>
+    </div>
+}

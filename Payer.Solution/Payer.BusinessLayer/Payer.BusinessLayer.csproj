@@ -47,6 +47,7 @@
     <Compile Include="Calculation\TaxCalculation.cs" />
     <Compile Include="Calculation\UnionFeeCalculation.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="LoginManager.cs" />
     <Compile Include="PayComputationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaxYearsManager.cs" />

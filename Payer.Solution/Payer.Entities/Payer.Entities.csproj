@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="PaymentRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

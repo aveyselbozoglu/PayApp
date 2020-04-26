@@ -5,11 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using Payer.BusinessLayer;
 using Payer.Entities;
+using Payer.Filter;
 using Rotativa;
 
 
 namespace Payer.Controllers
 {
+    [AuthAdmin]
     public class PayController : Controller
     {
         private readonly PayComputationManager payComputationManager = new PayComputationManager();

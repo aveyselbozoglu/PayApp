@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Payer.Entities
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,41 +22,62 @@
                 <a class="navbar-brand brand-logo" href="~/Employee/Index"><img src="~/Images/logo.png" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                <a class="nav-link text-primary">Register</a>
-                <a class="nav-link text-primary">Login</a>
+
+                @{
+                    var checkLogin = Session["login"] as Login;
+
+                    if (checkLogin == null)
+                    {
+                        <a href="~/Login/Index" class="nav-link text-primary">Login</a>
+                    }
+                    else
+                    {
+                        <a href="~/Login/Logout" class="nav-link text-primary">Logout</a>
+                    }
+
+                }
+
+
             </div>
         </nav>
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
-                            <span class="menu-title">Employee</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="Employee">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a href="~/Employee/Create" class="nav-link"> New Employee</a></li>
-                                <li class="nav-item"><a href="~/Employee/Index" class="nav-link"> All Employees</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                
+                @{
+                    if (Session["login"] != null)
+                    {
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
+                                    <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                                    <span class="menu-title">Employee</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="Employee">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a href="~/Employee/Create" class="nav-link"> New Employee</a></li>
+                                        <li class="nav-item"><a href="~/Employee/Index" class="nav-link"> All Employees</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#Payroll" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
-                            <span class="menu-title">Payroll</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="Payroll">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a href="~/Pay/Create" class="nav-link"> New Pay</a></li>
-                                <li class="nav-item"><a href="~/Pay/Index" class="nav-link"> Payment Records</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#Payroll" aria-expanded="false" aria-controls="ui-basic">
+                                    <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
+                                    <span class="menu-title">Payroll</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="Payroll">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a href="~/Pay/Create" class="nav-link"> New Pay</a></li>
+                                        <li class="nav-item"><a href="~/Pay/Index" class="nav-link"> Payment Records</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                }
+
             </nav>
             <div class="main-panel">
 

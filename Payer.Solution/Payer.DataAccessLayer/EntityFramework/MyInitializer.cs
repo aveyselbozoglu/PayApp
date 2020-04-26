@@ -34,6 +34,15 @@ namespace Payer.DataAccessLayer.EntityFramework
             
             var t = context.TaxYears.Add(taxyears);
             var t2 = context.TaxYears.Add(taxyears2);
+
+
+            var login = new Login()
+            {
+                Username = "admin",
+                Password = "admin"
+            };
+            context.Login.Add(login);
+
             var y = context.SaveChanges();
         }
     }

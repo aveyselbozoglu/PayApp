@@ -4,9 +4,11 @@ using Payer.ViewModels;
 using System;
 using System.Web;
 using System.Web.Mvc;
+using Payer.Filter;
 
 namespace Payer.Controllers
 {
+    [AuthAdmin]
     public class EmployeeController : Controller
     {
         private readonly PayComputationManager payComputationManager = new PayComputationManager();
@@ -14,7 +16,7 @@ namespace Payer.Controllers
         private readonly TaxYearsManager taxYearsManager = new TaxYearsManager();
         private BusinessLayerResult<Employee> blResultEmployee;
 
-        private ListPagination<PaymentRecord> listPaginationPaymentRecords = null;
+        private ListPagination<Employee> listPaginationEmployeeRecords;
 
         public EmployeeController()
         {
@@ -26,7 +28,7 @@ namespace Payer.Controllers
         {
 
             blResultEmployee = employeeManager.GetAllEmployees();
-            ListPagination<Employee> listPaginationEmployeeRecords = null;
+
 
             if (blResultEmployee.BlResultList != null)
             {
