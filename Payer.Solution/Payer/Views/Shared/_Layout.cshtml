@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <link href="~/Content/site.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
@@ -50,7 +51,7 @@
                         <div class="collapse" id="Payroll">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a href="~/Pay/Create" class="nav-link"> New Pay</a></li>
-                                <li class="nav-item"><a href="~/Pay/Index"  class="nav-link"> Payment Records</a></li>
+                                <li class="nav-item"><a href="~/Pay/Index" class="nav-link"> Payment Records</a></li>
                             </ul>
                         </div>
                     </li>
@@ -61,20 +62,22 @@
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                
+
             </div>
-            
+
         </div>
     </div>
-@*<footer class="footer" style="position: absolute;bottom:0">
-    <p> &copy; @DateTime.UtcNow.Year - Payer</p>
-</footer>*@
+    @*<footer class="footer" style="position: absolute;bottom:0">
+            <p> &copy; @DateTime.UtcNow.Year - Payer</p>
+        </footer>*@
 
 
     <script src="~/Scripts/dist/jquery.js"></script>
     <script src="~/Scripts/js/bootstrap.min.js"></script>
-    <!--<script src="~/Scripts/toastr.min.js"></script>-->
-    <script src="~/Scripts/site.js"></script>
 
+    <script src="~/Scripts/toastr.min.js"></script>
+    <!--<script src="~/Scripts/site.js"></script>-->
+    
+@RenderSection("CheckToastr",false)
 </body>
 </html>

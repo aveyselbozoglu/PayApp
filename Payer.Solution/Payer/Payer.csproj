@@ -138,9 +138,11 @@
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="App_Browsers\qt.browser" />
     <Content Include="Scripts\dist\jquery.js" />
     <Content Include="Scripts\dist\jquery.min.js" />
-    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -174,27 +176,25 @@
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="libman.json" />
-    <Content Include="Content\toastr.scss" />
-    <Content Include="Content\toastr.less" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\dist\jquery.min.map" />
-    <Content Include="Scripts\js\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\js\bootstrap.js.map" />
-    <Content Include="Scripts\js\bootstrap.min.js.map" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
-    <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.5.0.min.map" />
     <Content Include="Views\Employee\Detail.cshtml" />
     <Content Include="Views\Pay\Index.cshtml" />
     <Content Include="Views\Pay\Create.cshtml" />
     <Content Include="Views\Pay\Detail.cshtml" />
     <Content Include="Views\Pay\Payslip.cshtml" />
     <Content Include="Views\Pay\GeneratePayslipPdf.cshtml" />
+    <Content Include="Scripts\dist\jquery.min.map" />
+    <Content Include="Scripts\jquery-3.5.0.min.map" />
+    <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\js\bootstrap.js.map" />
+    <Content Include="Scripts\js\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

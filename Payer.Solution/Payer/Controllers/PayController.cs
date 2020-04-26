@@ -16,19 +16,25 @@ namespace Payer.Controllers
         private readonly EmployeeManager employeeManager = new EmployeeManager();
         private readonly TaxYearsManager taxYearsManager= new TaxYearsManager();
 
-        private BusinessLayerResult<PaymentRecord> blResultPaymentRecord = new BusinessLayerResult<PaymentRecord>();
-        // GET: Pay
-        public ActionResult Index(int? pageNumber)
+        private BusinessLayerResult<PaymentRecord> blResultPaymentRecord;
+        public PayController()
+        {
+            blResultPaymentRecord = new BusinessLayerResult<PaymentRecord>();
+        }
+
+        
+        
+        public ActionResult Index(int? pageIndex)
         {
             blResultPaymentRecord =payComputationManager.GetAllPayments();
-            ListPagination<PaymentRecord> p = null;
+            ListPagination<PaymentRecord> listPaginationPaymentRecords = null;
 
             if (blResultPaymentRecord.BlResultList != null)
             {
-                p = ListPagination<PaymentRecord>.Create(blResultPaymentRecord.BlResultList, pageNumber ?? 1, 3);
+                listPaginationPaymentRecords = ListPagination<PaymentRecord>.Create(blResultPaymentRecord.BlResultList, pageIndex ?? 1, 3);
             }
 
-            return View(p);
+            return View(listPaginationPaymentRecords);
         }
 
         public ActionResult Create()

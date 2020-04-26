@@ -1,10 +1,8 @@
 ﻿@using System.Web.UI.WebControls
 @using Payer.Entities
-@model List<Employee>
+@model ListPagination<Employee>
 
-@{
 
-}
 
 <div class="row">
     <div class="col-md-12 grid-margin">
@@ -81,9 +79,48 @@
                                 }
                             </tbody>
                         </table>
+                        @{
+                            var disablePrevious = !Model.IsPreviousPageAvailable() ? "disabled" : "";
+                            var disableNext = !Model.IsNextPageAvailable() ? "disabled" : "";
+                        }
+
+                        <a href="~/Employee/Index/@(Model.PageIndex -1)" class="btn btn-primary @disablePrevious">Previous</a>
+
+
+                        <a href="~/Employee/Index/@(Model.PageIndex +1)" class="btn btn-primary @disableNext">Next</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@{
+    var txt = TempData["toastmessage"];
+}
+@section CheckToastr{
+    <script>
+
+        if ("@TempData["toastmessage"]" === "Deleted") {
+            toastr.success("Deleted successfully");
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+        
+    </script>
+}

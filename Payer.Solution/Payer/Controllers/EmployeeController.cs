@@ -9,19 +9,33 @@ namespace Payer.Controllers
 {
     public class EmployeeController : Controller
     {
+        private readonly PayComputationManager payComputationManager = new PayComputationManager();
+        private readonly EmployeeManager employeeManager = new EmployeeManager();
+        private readonly TaxYearsManager taxYearsManager = new TaxYearsManager();
         private BusinessLayerResult<Employee> blResultEmployee;
+
+        private ListPagination<PaymentRecord> listPaginationPaymentRecords = null;
 
         public EmployeeController()
         {
             blResultEmployee = new BusinessLayerResult<Employee>();
         }
-        // GET: Employee
-        public ActionResult Index()
-        {
-            var employeeManager = new EmployeeManager();
 
-            var result = employeeManager.GetAllEmployees();
-            return View(result.BlResultList);
+        // GET: Employee
+        public ActionResult Index(int? pageIndex)
+        {
+
+            blResultEmployee = employeeManager.GetAllEmployees();
+            ListPagination<Employee> listPaginationEmployeeRecords = null;
+
+            if (blResultEmployee.BlResultList != null)
+            {
+                listPaginationEmployeeRecords = ListPagination<Employee>.Create(blResultEmployee.BlResultList, pageIndex ?? 1, 3);
+            }
+
+            return View(listPaginationEmployeeRecords);
+
+
         }
 
         [HttpGet]
@@ -116,6 +130,7 @@ namespace Payer.Controllers
 
                 if (blResultEmployee.IsDone > 0)
                 {
+                    TempData["toastmessage"] = "Deleted";
                     return RedirectToAction("Index");
                 }
             }

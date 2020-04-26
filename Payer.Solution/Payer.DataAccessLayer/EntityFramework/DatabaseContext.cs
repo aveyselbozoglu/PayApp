@@ -17,6 +17,8 @@ namespace Payer.DataAccessLayer.EntityFramework
 
         public DatabaseContext()
         {
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new MyInitializer());
         }
     }

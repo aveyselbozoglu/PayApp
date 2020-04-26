@@ -14,10 +14,23 @@ namespace Payer
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Default3",
+                url: "Employee/Index/{pageIndex}",
+                defaults: new { controller = "Employee", action = "Index", pageIndex = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default2",
+                url: "Pay/Index/{pageIndex}",
+                defaults: new { controller = "Pay", action = "Index", pageIndex = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Employee", action = "Index", id = UrlParameter.Optional }
             );
+            
         }
     }
 }
