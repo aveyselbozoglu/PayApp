@@ -143,6 +143,9 @@
     <Content Include="Scripts\dist\jquery.min.js" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\Payer20200427203904 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Payer20200427223031 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Payer20200428041112 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />

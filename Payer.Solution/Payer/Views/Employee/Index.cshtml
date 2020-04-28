@@ -2,6 +2,7 @@
 @using Payer.Entities
 @model ListPagination<Employee>
 
+
 <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
@@ -104,7 +105,7 @@
     <script>
 
         if ("@TempData["toastmessage"]" === "Deleted") {
-            toastr.success("Deleted successfully");
+            toastr.success("Employee deleted successfully!");
             toastr.options = {
                 "closeButton": false,
                 "debug": false,
@@ -123,5 +124,29 @@
                 "hideMethod": "fadeOut"
             }
         }
+
+        if ("@TempData["createemployee"]" === "Created") {
+            toastr.success("Employee created successfully!");
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+
+
+
     </script>
 }

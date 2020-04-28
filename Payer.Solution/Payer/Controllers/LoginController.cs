@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Payer.BusinessLayer;
+﻿using Payer.BusinessLayer;
 using Payer.Entities;
+using System.Web.Mvc;
 
 namespace Payer.Controllers
 {
@@ -24,19 +20,20 @@ namespace Payer.Controllers
             {
                 BusinessLayerResult<Login> blResultLogin = new BusinessLayerResult<Login>();
                 LoginManager loginManager = new LoginManager();
-                blResultLogin =  loginManager.Login(loginModel);
-                TempData["loginerror"] = "Username or password wrong!";
+                blResultLogin = loginManager.Login(loginModel);
+
                 if (blResultLogin.BlResult != null)
                 {
                     Session["login"] = blResultLogin.BlResult;
-                    
+
                     return RedirectToAction("Index", "Employee");
                 }
+                TempData["loginerror"] = "Username or password wrong!";
             }
 
-            
             return View(loginModel);
         }
+
         public ActionResult Logout()
         {
             if (Session["login"] != null)
@@ -46,6 +43,5 @@ namespace Payer.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }

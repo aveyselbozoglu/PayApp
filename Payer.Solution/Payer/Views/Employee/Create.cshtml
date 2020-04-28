@@ -68,7 +68,12 @@
                         @Html.LabelFor(x => x.Gender, "Gender")
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.TextBoxFor(x => x.Gender, new { placeholder = "Enter Gender...", @class = "form-control" })
+                        
+                        @Html.DropDownListFor(x=> x.Gender,new List<SelectListItem>()
+                        {
+                            new SelectListItem(){Selected = true, Text = "Male",Value  ="Male"},
+                            new SelectListItem(){ Text = "Female",Value  ="Female"}
+                        }, new { @class="form-control" })
                     </div>
                     <div class="col-md-2"></div>
                     <div class="form-group col-md-2">
@@ -78,6 +83,7 @@
                         @Html.TextBoxFor(x => x.DOB, new
                         {
                             @class = "form-control", placeholder = "Enter Date Of Birth..."
+                            ,   type="date"
                         })
                     </div>
                 </div>

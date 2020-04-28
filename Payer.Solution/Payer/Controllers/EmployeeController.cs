@@ -56,7 +56,7 @@ namespace Payer.Controllers
                                              profileImage.ContentType == "image/jpeg"))
                 {
                     string fileName =
-                        $"employee_{employeeCreateViewModel.EmployeeNo}_time_{DateTime.Now.ToShortDateString()}.{profileImage.ContentType.Split('/')[1]}";
+                        $"employee_{employeeCreateViewModel.EmployeeNo}_time_{DateTime.Now.Ticks}.{profileImage.ContentType.Split('/')[1]}";
                     employeeCreateViewModel.ImageUrl = fileName;
                     profileImage.SaveAs(Server.MapPath($"/Images/employee/{fileName}"));
                 }
@@ -70,6 +70,7 @@ namespace Payer.Controllers
                     //blResultEmployee.ToastrNotificationObject.ToastrNotificationType = ToastrNotificationType.Success;
 
                     //Alert("Başarılı" , NotificationType.success);
+                    TempData["createemployee"] = "Created";
                     return RedirectToAction("Index");
                 }
             }
